@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coffee Shop Inventory</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="bg-orb orb-one"></div>
+      <div class="bg-orb orb-two"></div>
+
+      <div class="container">
+        <header class="topbar">
+          <div class="brand-wrap">
+            <div class="brand-mark">☕</div>
+            <div>
+              <p class="eyebrow">Inventory Control</p>
+              <h1>Brew Haven</h1>
+            </div>
+          </div>
+
+          <button id="resetDataBtn" class="secondary-btn">Reset Demo Data</button>
+        </header>
+
+        <section class="stats-grid">
+          <div class="stat-card accent">
+            <div class="stat-icon">📦</div>
+            <div>
+              <label>Total Products</label>
+              <strong id="totalProducts">0</strong>
+            </div>
+          </div>
+
+          <div class="stat-card warning">
+            <div class="stat-icon">⚠️</div>
+            <div>
+              <label>Low Stock</label>
+              <strong id="lowStockCount">0</strong>
+            </div>
+          </div>
+
+          <div class="stat-card success">
+            <div class="stat-icon">💰</div>
+            <div>
+              <label>Inventory Value</label>
+              <strong id="inventoryValue">$0.00</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel form-panel">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">Add stock</p>
+              <h2>Add Product</h2>
+            </div>
+          </div>
+
+          <form id="productForm" class="product-form">
+            <div class="field-group">
+              <label>Product Name</label>
+              <input type="text" id="name" placeholder="Espresso Beans" required />
+            </div>
+
+            <div class="field-group">
+              <label>Category</label>
+              <input type="text" id="category" placeholder="Coffee Beans" required />
+            </div>
+
+            <div class="field-group">
+              <label>Supplier</label>
+              <input type="text" id="supplier" placeholder="Sunrise Roasters" required />
+            </div>
+
+            <div class="field-group small">
+              <label>Quantity</label>
+              <input type="number" id="quantity" min="0" value="0" required />
+            </div>
+
+            <div class="field-group small">
+              <label>Reorder Level</label>
+              <input type="number" id="reorderLevel" min="0" value="0" required />
+            </div>
+
+            <div class="field-group small">
+              <label>Unit Price</label>
+              <input type="number" id="unitPrice" min="0" step="0.01" value="0" required />
+            </div>
+
+            <button type="submit" class="primary-btn">Add Product</button>
+          </form>
+        </section>
+
+        <section class="panel table-panel">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">Live overview</p>
+              <h2>Inventory</h2>
+            </div>
+
+            <div class="toolbar">
+              <input type="search" id="searchInput" placeholder="Search by name, category, supplier" />
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Category</th>
+                  <th>Supplier</th>
+                  <th>Qty</th>
+                  <th>Reorder</th>
+                  <th>Unit Price</th>
+                  <th>Total</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="inventoryTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <template id="rowTemplate">
+      <tr>
+        <td class="product-name"></td>
+        <td class="product-category"></td>
+        <td class="product-supplier"></td>
+        <td class="product-quantity"></td>
+        <td class="product-reorder"></td>
+        <td class="product-price"></td>
+        <td class="product-total"></td>
+        <td class="action-cell">
+          <button class="mini-btn sell-btn">Sell</button>
+          <button class="mini-btn restock-btn">Restock</button>
+          <button class="mini-btn delete-btn">Delete</button>
+        </td>
+      </tr>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
